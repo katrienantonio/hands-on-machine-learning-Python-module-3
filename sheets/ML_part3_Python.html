@@ -1,0 +1,3088 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Hands-on Machine Learning with Python - Module 3</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Katrien Antonio &amp; Jonas Crevecoeur &amp; Roel Henckaerts" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/metropolis.css" type="text/css" />
+    <link rel="stylesheet" href="css/metropolis-fonts.css" type="text/css" />
+    <link rel="stylesheet" href="css/my-css.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Hands-on Machine Learning with Python - Module 3
+## Hands-on webinar
+<html>
+<div style="float:left">
+
+</div>
+<hr align='center' color='#116E8A' size=1px width=97%>
+</html>
+### Katrien Antonio &amp; Jonas Crevecoeur &amp; Roel Henckaerts
+### <a href="https://github.com/katrienantonio/hands-on-machine-learning-Python-module-3">hands-on-machine-learning-Python-module-3</a> | April, 2023
+
+---
+
+class: inverse, center, middle
+name: prologue
+
+
+
+
+
+
+
+# Prologue
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#FAFAFA' size=1px width=796px&gt;&lt;/html&gt;
+
+---
+
+name: introduction
+
+# Introduction
+
+### Course
+
+<svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#116E8A;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> https://github.com/katrienantonio/hands-on-machine-learning-Python-module-3
+
+The course repo on GitHub, where you can find the data sets, lecture sheets, Google Colab links and Python notebooks.
+
+--
+
+### Us
+
+<svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#116E8A;overflow:visible;position:relative;"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg> [https://katrienantonio.github.io/](https://katrienantonio.github.io/) &amp; [LinkedIn profile Jonas](https://www.linkedin.com/in/jonascrevecoeur/) &amp; [LinkedIn profile Roel](https://www.linkedin.com/in/roelhenckaerts)
+
+<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#116E8A;overflow:visible;position:relative;"><path d="M16.1 260.2c-22.6 12.9-20.5 47.3 3.6 57.3L160 376V479.3c0 18.1 14.6 32.7 32.7 32.7c9.7 0 18.9-4.3 25.1-11.8l62-74.3 123.9 51.6c18.9 7.9 40.8-4.5 43.9-24.7l64-416c1.9-12.1-3.4-24.3-13.5-31.2s-23.3-7.5-34-1.4l-448 256zm52.1 25.5L409.7 90.6 190.1 336l1.2 1L68.2 285.7zM403.3 425.4L236.7 355.9 450.8 116.6 403.3 425.4z"/></svg> [katrien.antonio@kuleuven.be](mailto:katrien.antonio@kuleuven.be) &amp; [jonas.crevecoeur@kuleuven.be](mailto:jonas.crevecoeur@kuleuven.be) &amp;  [roel.henckaerts@kuleuven.be](mailto:roel.henckaerts@kuleuven.be)
+
+<svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#116E8A;overflow:visible;position:relative;"><path d="M320 32c-8.1 0-16.1 1.4-23.7 4.1L15.8 137.4C6.3 140.9 0 149.9 0 160s6.3 19.1 15.8 22.6l57.9 20.9C57.3 229.3 48 259.8 48 291.9v28.1c0 28.4-10.8 57.7-22.3 80.8c-6.5 13-13.9 25.8-22.5 37.6C0 442.7-.9 448.3 .9 453.4s6 8.9 11.2 10.2l64 16c4.2 1.1 8.7 .3 12.4-2s6.3-6.1 7.1-10.4c8.6-42.8 4.3-81.2-2.1-108.7C90.3 344.3 86 329.8 80 316.5V291.9c0-30.2 10.2-58.7 27.9-81.5c12.9-15.5 29.6-28 49.2-35.7l157-61.7c8.2-3.2 17.5 .8 20.7 9s-.8 17.5-9 20.7l-157 61.7c-12.4 4.9-23.3 12.4-32.2 21.6l159.6 57.6c7.6 2.7 15.6 4.1 23.7 4.1s16.1-1.4 23.7-4.1L624.2 182.6c9.5-3.4 15.8-12.5 15.8-22.6s-6.3-19.1-15.8-22.6L343.7 36.1C336.1 33.4 328.1 32 320 32zM128 408c0 35.3 86 72 192 72s192-36.7 192-72L496.7 262.6 354.5 314c-11.1 4-22.8 6-34.5 6s-23.5-2-34.5-6L143.3 262.6 128 408z"/></svg> (Katrien) Professor in insurance data science
+
+<svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#116E8A;overflow:visible;position:relative;"><path d="M320 32c-8.1 0-16.1 1.4-23.7 4.1L15.8 137.4C6.3 140.9 0 149.9 0 160s6.3 19.1 15.8 22.6l57.9 20.9C57.3 229.3 48 259.8 48 291.9v28.1c0 28.4-10.8 57.7-22.3 80.8c-6.5 13-13.9 25.8-22.5 37.6C0 442.7-.9 448.3 .9 453.4s6 8.9 11.2 10.2l64 16c4.2 1.1 8.7 .3 12.4-2s6.3-6.1 7.1-10.4c8.6-42.8 4.3-81.2-2.1-108.7C90.3 344.3 86 329.8 80 316.5V291.9c0-30.2 10.2-58.7 27.9-81.5c12.9-15.5 29.6-28 49.2-35.7l157-61.7c8.2-3.2 17.5 .8 20.7 9s-.8 17.5-9 20.7l-157 61.7c-12.4 4.9-23.3 12.4-32.2 21.6l159.6 57.6c7.6 2.7 15.6 4.1 23.7 4.1s16.1-1.4 23.7-4.1L624.2 182.6c9.5-3.4 15.8-12.5 15.8-22.6s-6.3-19.1-15.8-22.6L343.7 36.1C336.1 33.4 328.1 32 320 32zM128 408c0 35.3 86 72 192 72s192-36.7 192-72L496.7 262.6 354.5 314c-11.1 4-22.8 6-34.5 6s-23.5-2-34.5-6L143.3 262.6 128 408z"/></svg> (Jonas) PhD in insurance data science, now data science consultant at UHasselt and KULeuven
+
+<svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#116E8A;overflow:visible;position:relative;"><path d="M320 32c-8.1 0-16.1 1.4-23.7 4.1L15.8 137.4C6.3 140.9 0 149.9 0 160s6.3 19.1 15.8 22.6l57.9 20.9C57.3 229.3 48 259.8 48 291.9v28.1c0 28.4-10.8 57.7-22.3 80.8c-6.5 13-13.9 25.8-22.5 37.6C0 442.7-.9 448.3 .9 453.4s6 8.9 11.2 10.2l64 16c4.2 1.1 8.7 .3 12.4-2s6.3-6.1 7.1-10.4c8.6-42.8 4.3-81.2-2.1-108.7C90.3 344.3 86 329.8 80 316.5V291.9c0-30.2 10.2-58.7 27.9-81.5c12.9-15.5 29.6-28 49.2-35.7l157-61.7c8.2-3.2 17.5 .8 20.7 9s-.8 17.5-9 20.7l-157 61.7c-12.4 4.9-23.3 12.4-32.2 21.6l159.6 57.6c7.6 2.7 15.6 4.1 23.7 4.1s16.1-1.4 23.7-4.1L624.2 182.6c9.5-3.4 15.8-12.5 15.8-22.6s-6.3-19.1-15.8-22.6L343.7 36.1C336.1 33.4 328.1 32 320 32zM128 408c0 35.3 86 72 192 72s192-36.7 192-72L496.7 262.6 354.5 314c-11.1 4-22.8 6-34.5 6s-23.5-2-34.5-6L143.3 262.6 128 408z"/></svg> (Roel) PhD in insurance data science, now senior data analyst at [Prophecy Labs](https://www.prophecylabs.com/)
+
+---
+
+name: why-this-course # inspired by Grant McDermott intro lecture
+
+# Why this course?
+
+### The goals of this module .font140[<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#116E8A;overflow:visible;position:relative;"><path d="M156.6 384.9L125.7 354c-8.5-8.5-11.5-20.8-7.7-32.2c3-8.9 7-20.5 11.8-33.8L24 288c-8.6 0-16.6-4.6-20.9-12.1s-4.2-16.7 .2-24.1l52.5-88.5c13-21.9 36.5-35.3 61.9-35.3l82.3 0c2.4-4 4.8-7.7 7.2-11.3C289.1-4.1 411.1-8.1 483.9 5.3c11.6 2.1 20.6 11.2 22.8 22.8c13.4 72.9 9.3 194.8-111.4 276.7c-3.5 2.4-7.3 4.8-11.3 7.2v82.3c0 25.4-13.4 49-35.3 61.9l-88.5 52.5c-7.4 4.4-16.6 4.5-24.1 .2s-12.1-12.2-12.1-20.9V380.8c-14.1 4.9-26.4 8.9-35.7 11.9c-11.2 3.6-23.4 .5-31.8-7.8zM384 168c22.1 0 40-17.9 40-40s-17.9-40-40-40s-40 17.9-40 40s17.9 40 40 40z"/></svg>]
+
+--
+
+* .KULbginline[de-mystify] neural networks
+
+--
+
+* develop foundations of working with (different types of) .KULbginline[neural networks]
+
+--
+
+* focus on the use of neural networks for the .KULbginline[analysis of claim frequency + severity data], also in combination with GLMs or tree-based ML models 
+
+--
+
+* discuss how to .KULbginline[evaluate] and .KULbginline[interpret] neural networks
+
+--
+
+* step from simple networks (for regression) to .KULbginline[auto encoders] and .KULbginline[convolutional] networks.
+
+--
+
+
+
+---
+
+# Want to read more?
+
+.pull-left[
+
+This presentation is based on
+
+* Michael A. Nielsen (2015) [Neural networks and deep learning](http://neuralnetworksanddeeplearning.com/)
+
+* the work of prof. Taylor Arnold, in particular Chapter 8 in the book [A computational approach to statistical learning](https://www.routledge.com/A-Computational-Approach-to-Statistical-Learning/Arnold-Kane-Lewis/p/book/9780367570613) by Arnold, Kane &amp; Lewis (2019)
+
+* Boehmke (2020) on [Deep Learning with R: using Keras with TensorFlow backend](https://github.com/rstudio-conf-2020/dl-keras-tf).   
+
+]
+
+.pull-right[
+
+Actuarial modelling with neural nets is covered in
+
+* Wüthrich &amp; Buser (2020) [Data analytics for non-life insurance pricing](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2870308), in particular Chapter 5
+
+* Wüthrich (2019) [From Generalized Linear Models to neural networks, and back](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3491790)
+
+* Wüthrich &amp; Merz (2019) [Editorial: Yes, we CANN!](https://www.cambridge.org/core/journals/astin-bulletin-journal-of-the-iaa/article/editorial-yes-we-cann/66E8BEC373B5CCEF3BF3303D442D6B75), in ASTIN Bulletin 49/1.
+
+* Denuit, Hainaut &amp; Trufin (2019) [Effective Statistical Learning Methods for Actuaries: Neural Networks and Extensions](https://www.springer.com/gp/book/9783030258269), Springer Actuarial Lecture Notes
+
+* A series of (working) papers covering the use of neural nets in insurance pricing (classic, and with telematics collected data), mortality forecasting, reserving, ... 
+
+]
+
+---
+
+# Module 3's Outline
+
+.pull-left[
+
+* [Getting started](#start)
+  - Unpacking our toolbox
+  - Tensors
+
+* [De-mystifying neural networks](#demystify)
+  - What's in a name?
+  - A simple neural network
+  
+* [Neural network architecture](#fundamentals)
+  - An architecture with layers in {keras}
+  
+* [Network compilation](#compilation)
+  - Loss function and forward pass
+  - Gradient descent and backpropagation
+  - Performance metrics
+  - Model evaluation
+]
+
+.pull-right[  
+
+* [Regression with neural networks](#regression)
+  - Redefining GLMs as a neural network
+  - Including exposure
+  - Case study
+
+* [Convolutional neural networks](#cnn)
+  - Handling new data formats
+  - Convolutional layers explained
+  - Evaluation and intepretation
+  
+* [Auto encoders](#autoencoder)
+  - Data compression and feature extraction
+  - Evaluation
+  
+]
+
+---
+
+name: map-ML-world
+class: right, middle, clear
+background-image: url("img/map_ML_world.jpg")
+background-size: 45% 
+background-position: left
+
+
+.KULbginline[Some roadmaps to explore the ML landscape...] 
+
+&lt;img src = "img/AI_ML_DL.jpg" height = "350px" /&gt;
+
+.font60[Source: [Machine Learning for Everyone In simple words. With real-world examples. Yes, again.](https://vas3k.com/blog/machine_learning/)]
+
+
+---
+class: inverse, center, middle
+name: start
+
+# Getting started
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#FAFAFA' size=1px width=796px&gt;&lt;/html&gt;
+
+---
+
+# What's the excitement about?
+
+### .font140[<svg aria-hidden="true" role="img" viewBox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#116E8A;overflow:visible;position:relative;"><path d="M112.1 454.3c0 6.297 1.816 12.44 5.284 17.69l17.14 25.69c5.25 7.875 17.17 14.28 26.64 14.28h61.67c9.438 0 21.36-6.401 26.61-14.28l17.08-25.68c2.938-4.438 5.348-12.37 5.348-17.7L272 415.1h-160L112.1 454.3zM192 0C90.02 .3203 16 82.97 16 175.1c0 44.38 16.44 84.84 43.56 115.8c16.53 18.84 42.34 58.23 52.22 91.45c.0313 .25 .0938 .5166 .125 .7823h160.2c.0313-.2656 .0938-.5166 .125-.7823c9.875-33.22 35.69-72.61 52.22-91.45C351.6 260.8 368 220.4 368 175.1C368 78.8 289.2 .0039 192 0zM288.4 260.1c-15.66 17.85-35.04 46.3-49.05 75.89h-94.61c-14.01-29.59-33.39-58.04-49.04-75.88C75.24 236.8 64 206.1 64 175.1C64 113.3 112.1 48.25 191.1 48C262.6 48 320 105.4 320 175.1C320 206.1 308.8 236.8 288.4 260.1zM176 80C131.9 80 96 115.9 96 160c0 8.844 7.156 16 16 16S128 168.8 128 160c0-26.47 21.53-48 48-48c8.844 0 16-7.148 16-15.99S184.8 80 176 80z"/></svg>] Neural networks are an exciting topic to explore, because:
+
+--
+
+* They are a .KULbginline[biologically-inspired programming paradigm] that enables a computer to learn from data.
+
+--
+
+* .KULbginline[Deep learning] is a powerful set of techniques for learning in neural networks.
+
+--
+
+* Neural networks and deep learning provide .KULbginline[best-in-class solutions] to many problems in image recognition, speech recognition and natural language processing.
+
+--
+
+* The .KULbginline[universal approximation theorem] (Hornik et al., 1989; Cybenko, 1989) states that neural networks with a single hidden layer can be used to approximate any continuous function to any desired precision.
+
+---
+
+# The programming framework for today
+
+&lt;br&gt;
+&lt;img src="img/modelflow_python.png" width="500" height="100" style="display: block; margin: auto;" /&gt;
+&lt;br&gt;
+
+* Python: &lt;br&gt;Our chosen programming language.
+
+* Keras: &lt;br&gt;An inuitive high level module interface to TensorFlow.
+
+* TensorFlow: &lt;br&gt; Open source platform for machine learning developed by the Google Brain Team, see [https://www.tensorflow.org/](https://www.tensorflow.org/). &lt;br&gt; Special focus on training deep neural networks.
+
+This is the most popular framework for training neural networks today. An alternative is `Pytorch` (developed by Facebook) which is mainly used in research. 
+
+---
+
+# Python libraries
+Today's session will make extensive use of {keras}, {numpy} and {tensorflow}. &lt;br&gt;
+Do not forget to import these libraries in your Python session.
+
+
+```python
+import keras
+import tensorflow as tf
+import numpy as np
+```
+
+.center[
+&lt;img src = "img/keras.jpg" height="200px" /&gt;
+]
+
+---
+# Why is this thing called TensorFlow?
+
+A scalar is a single number, or a 0D tensor, i.e. .hi-pink[zero dimensional]:
+
+&lt;!-- `$$\text{age_car = 5}, \quad \text{fuel = gasoline}, \quad \text{bm = 10}$$` --&gt;
+.center[
+`age_car = 5`, &amp;nbsp;&amp;nbsp; `fuel = gasoline`, &amp;nbsp;&amp;nbsp; `bm = 10`
+]
+
+In tensor parlance a scalar has 0 axes.
+
+--
+
+In a .hi-pink[big data world] with structured and unstructured data, our .hi-pink[input] can be a
+
+* a single time series: 1-dimensional, with 1 axis
+
+* one sound fragment: 2-dimensional, with 2 axes
+
+* one image in color: 3-dimensional, with 3 axes
+
+* one movie: 4-dimensional, with 4 axes
+
+* ...
+
+--
+
+We require a framework that can flexibly adjust to all these data structures!
+
+
+---
+
+# Why is this thing called TensorFlow? (cont.)
+
+.hi-pink[TensorFlow] is this flexible framework which consists of highly optimized functions based on .hi-pink[tensors].
+
+What is a .hi-pink[tensor]?
+
+* A 1-dimensional tensor is a vector (e.g. closing daily stock price during 250 days)
+
+&lt;img src="ML_part1_Python_files/figure-html/unnamed-chunk-3-1.svg" width="300" height="20" style="display: block; margin: auto;" /&gt;
+
+--
+* A 2-dimensional tensor is a matrix (e.g. a tabular data set with observations and features)
+
+&lt;img src="ML_part1_Python_files/figure-html/unnamed-chunk-4-1.svg" width="300" height="100" style="display: block; margin: auto;" /&gt;
+
+* ...
+
+--
+
+Tensors generalize vectors and matrices to an arbitrary number of dimensions. 
+
+Many matrix operations, such as the matrix product, can be generalized to tensors.
+
+Luckily Keras provides a high level interface to TensorFlow, such that we will have only minimal exposure to tensors and the complicated math behind them.
+
+
+---
+
+# Example of a 3D tensor
+
+.pull-left[
+
+Let's picture a stock price dataset where
+
+* each minute we record the current price, lowest price and highest price
+* a trading day has 390 minutes and a trading year has 250 days.
+
+Then, one year of data can then be stored in a 3D tensor `(samples, timesteps, features)`, here: `(250, 390, 3)`.
+
+]
+
+.pull-right[
+
+.center[
+&lt;img src = "img/3D_tensor.png" width="500px" /&gt;
+]
+
+.right[Source: [Bradley Boehmke](https://github.com/rstudio-conf-2020/dl-keras-tf)]
+
+]
+
+---
+
+# Example of a 4D tensor
+
+.pull-left[
+
+Let's picture an image data set where
+
+* each image has a specific height and width
+* three color channels (Red, Green, Blue) are registered
+* multiple images (`samples`) are stored.
+
+
+Then, a collection of images can be stored in a 4D tensor `(samples, height, width, channels)`.
+
+]
+
+.pull-right[
+
+.center[
+&lt;img src = "img/4D_tensor.png" width="500px" /&gt;
+]
+
+.right[Source: [Bradley Boehmke](https://github.com/rstudio-conf-2020/dl-keras-tf)]
+
+]
+
+---
+
+# Example of a 5D tensor
+
+.pull-left[
+
+Let's picture a video data set where
+
+* each video sample is one minute long and has a number of frames per second (e.g. 4 frames per second)
+* each frame has a specific height (e.g. 256 pixels) and width (e.g. 144 pixels)
+* three color channels (Red, Green, Blue)
+* multiple images (`samples`) are stored.
+
+
+Then, a collection of images can be stored in a 4D tensor `(samples, frames, height, width, channels)` which becomes here `(samples, 240, 256, 144, 3)`.
+
+
+]
+
+.pull-right[
+
+.center[
+&lt;img src = "img/5D_tensor.jpg" width="500px" /&gt;
+]
+
+.right[Source: [Bradley Boehmke](https://github.com/rstudio-conf-2020/dl-keras-tf)]
+
+]
+
+---
+
+# Tensor functions
+
+.pull-left[
+`Tensorflow` generalizes many mathematical operations from `numpy` for inputs of type tensor.
+
+See the [Tensorflow documentation](https://www.tensorflow.org/api_docs/python/tf) for a list of all tensor functions.
+
+* `tf.constant`: create and initialise a tensor. 
+
+```python
+x = tf.constant(
+  [1,2,3,4,5,6], 
+  shape = [3,2], 
+  dtype=tf.float32); 
+x
+## &lt;tf.Tensor: shape=(3, 2), dtype=float32, numpy=
+## array([[1., 2.],
+##        [3., 4.],
+##        [5., 6.]], dtype=float32)&gt;
+```
+]
+
+.pull-right[
+Similar to `numpy` functions, most tensor operations require an axis parameter to specify the dimensions over which the function should be performed.
+
+* `tf.math.reduce_mean`: calculate the mean of the tensor.
+
+
+```python
+tf.math.reduce_mean(x, axis = 0)
+## &lt;tf.Tensor: shape=(2,), dtype=float32, numpy=array([3., 4.], dtype=float32)&gt;
+```
+
+Created tensors are compatible with `numpy` functions
+
+
+```python
+np.mean(x, axis = 0)
+## array([3., 4.], dtype=float32)
+```
+
+]
+
+---
+
+name: yourturn
+class: clear
+
+.left-column[
+
+&lt;!-- Add icon library --&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
+
+## &lt;i class="fa fa-edit"&gt;&lt;/i&gt; &lt;br&gt; Your turn
+
+]
+
+
+.right-column[
+
+&lt;br&gt;
+In this warming up exercise you .KULbginline[create a tensor] and .KULbginline[apply basic tensor functions].
+&lt;br&gt;
+&lt;br&gt;
+* .hi-pink[Q.1]: create a 3-dimensional tensor in Python with values `1, 2, ..., 12` and shape `(2, 3, 2)`.
+
+* .hi-pink[Q.2]: calculate the logarithm of this tensor.
+
+* .hi-pink[Q.3]: calculate the mean of this tensor over the third axis. 
+]
+
+---
+
+
+class: inverse, center, middle
+name: data-sets
+
+# Data sets used in the course 
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#FAFAFA' size=1px width=796px&gt;&lt;/html&gt;
+
+
+---
+
+name: data-sets-used
+
+# Data sets used in this course - MTPL 
+
+We will (once again) use the Motor Third Party Liability data set. There are 163,231 policyholders in this data set. 
+
+The frequency of claiming (`nclaims`) and corresponding severity (`avg`, the amount paid on average per claim reported by a policyholder) are the .KULbginline[target variables] in this data set. 
+
+Predictor variables are: 
+
+* the exposure-to-risk, the duration of the insurance coverage (max. 1 year)
+* factor variables, e.g. gender, coverage, fuel
+* continuous, numeric variables, e.g. age of the policyholder, age of the car
+* spatial information: postal code (in Belgium) of the municipality where the policyholder resides.
+
+More details in [Henckaerts et al. (2018, Scandinavian Actuarial Journal)](https://katrienantonio.github.io/projects/2019/06/13/machine-learning/#data-driven) and [Henckaerts et al. (2019, arxiv)](https://katrienantonio.github.io/projects/2019/06/13/machine-learning/#tree-based-pricing).
+
+---
+
+class: clear, center, middle
+
+background-image: url("img/MnistExamples.png")
+background-size: cover
+background-size: 95% 
+background-position: left
+
+.font1000.bold[MNIST]
+
+---
+
+name: data-sets-used
+
+# Data sets used in this course - MNIST
+
+As discussed, not all data are in tabular format. 
+
+We analyze an .KULbginline[image database] from the Modified National Institute of Standards and Technology, short [MNIST](https://en.wikipedia.org/wiki/MNIST_database). 
+
+Working with MNIST will learn us how machine learning methods can be used to work with new data sources, such as images. 
+
+.pull-left[
+* Large database of 70,000 labeled images of handwritten digits, see [http://yann.lecun.com/exdb/mnist/](http://yann.lecun.com/exdb/mnist/)
+
+* Images are preprocessed, i.e. scaled and centered.
+
+* Classic test case for machine learning classification algorithms. Current models achieve an accuracy of [more than 99.5%](https://en.wikipedia.org/wiki/MNIST_database). 
+]
+
+.pull-right[
+.center[
+&lt;img src = "img/neural_network_sample.gif" height = "350px" /&gt;
+]
+]
+
+
+---
+
+# Data sets used in this course - MNIST
+
+
+
+
+.pull-left[
+
+The images are in grayscale. Each image is stored as a 28x28 intensity matrix, with intensity expressed on a scale from 0-255.
+
+&lt;img src="ML_part1_Python_files/figure-html/example_mnist_input-1.svg" width="360" height="360" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+Recognizing that the images below all represent the digit 8 is trivial for humans, but difficult for computers.
+
+&lt;img src="ML_part1_Python_files/figure-html/plot_example_mnist-1.svg" height="150" style="display: block; margin: auto;" /&gt;
+
+Neural networks are ideal for situations where the relation between the input (here: intensity matrix) and the output (here: 0-9) is complicated.
+]
+
+
+---
+
+class: inverse, center, middle
+name: demystify
+
+# De-mystifying neural networks
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#FAFAFA' size=1px width=796px&gt;&lt;/html&gt;
+
+
+---
+
+# What's in a name?
+
+.pull-left[
+Different types of neural networks and their applications: 
+
+* .KULbginline[ANN]: Artificial Neural Network &lt;br&gt; for regression and classification problems, with vectors as input data
+
+* .KULbginline[CNN]: Convolutional Neural Network &lt;br&gt; for image processing, image/face/... recognition, with images as input data
+
+* .KULbginline[RNN]: Recurrent Neural Network &lt;br&gt; for sequential data such as text or time series
+
+... and many more!
+]
+
+.pull-right[
+
+&lt;div style='height:100%; overflow:scroll;'&gt;
+&lt;img src = "img/neural_network_types.png" /&gt;
+&lt;/div&gt;
+
+]
+---
+
+# A simple neural network
+
+.pull-left[
+
+De-mystify artificial neural networks (ANNs): 
+
+* a collection of inter-woven linear models
+* extending linear approaches to detect .KULbginline[non-linear] interactions in .KULbginline[high-dimensional] data.
+
+See the picture on the right.
+
+.KULbginline[Goal]: predict a scalar response `\(y\)` from scalar input `\(x\)`.
+
+]
+
+.pull-right[
+
+
+
+&lt;img src = "img/a_simple_neural_network.png" /&gt;
+
+Some terminology: 
+
+* `\(x\)` is the .KULbginline[input layer]
+* `\(v\)` is the .KULbginline[output layer]
+* middle layer is a .KULbginline[hidden layer]
+* four neurons: `\(x\)`, `\(z_1\)`, `\(z_2\)` and `\(v\)`.
+
+
+]
+
+---
+
+# A simple neural network (cont.)
+
+.pull-left[
+
+First, we apply two independent .KULbginline[linear models]:
+$$
+`\begin{eqnarray*}
+z_1 &amp;=&amp; b_1 + x \cdot w_1 \\
+z_2 &amp;=&amp; b_2 + x \cdot w_2
+\end{eqnarray*}`
+$$
+using four parameters: two intercepts and two slopes.
+
+Next, we construct .KULbginline[another linear model] with the `\(z_j\)` as inputs:
+$$
+`\begin{eqnarray*}
+\hat{y} := v &amp;=&amp; b_3 + z_1 \cdot u_1 + z_2 \cdot u_2.
+\end{eqnarray*}`
+$$
+Putting it all together:
+$$
+`\begin{eqnarray*}
+v &amp;=&amp; b_3 +  z_1 \cdot u_1 + z_2 \cdot u_2 \\
+&amp;=&amp; b_3 + (b_1 + x \cdot w_1)\cdot u_1 + (b_2+ x \cdot w_2) \cdot u_2 \\
+&amp;=&amp; (b_3 + u_1 \cdot b_1+ u_2 \cdot b_2) + (w_1 \cdot u_1 + w_2 \cdot u_2) \cdot x \\
+&amp;=&amp; \text{(intercept)} + \text{(slope)} \cdot x. 
+\end{eqnarray*}`
+$$
+
+]
+
+
+.pull-right[
+
+Model is over-parametrized, with infinitely many ways to describe the same model. 
+
+Essentially, still a linear model!
+
+&lt;img src = "img/sum_linear_models.png" /&gt;
+
+]
+
+---
+
+# A simple neural network (cont.)
+
+.pull-left[
+We capture .KULbginline[non-linear] relationships between `\(x\)` and `\(v\)` by replacing
+$$
+`\begin{eqnarray*}
+v &amp;=&amp; b_3 + z_1 \cdot u_1 + z_2 \cdot u_2.
+\end{eqnarray*}`
+$$
+with
+$$
+`\begin{eqnarray*}
+v &amp;=&amp; b_3 + \sigma(z_1) \cdot u_1 + \sigma(z_2) \cdot u_2 \\
+&amp;=&amp; b_3 + \sigma(b_1 + x \cdot w_1) \cdot u_1 + \sigma(b_2 + x \cdot w_2) \cdot u_2,
+\end{eqnarray*}`
+$$
+where `\(\sigma(.)\)` is an .KULbginline[activation function], a mapping from `\(\mathbb{R}\)` to `\(\mathbb{R}\)`.
+
+
+Adding an activation function greatly increases the .KULbginline[set of possible relations] between `\(x\)` and `\(v\)`!
+]
+
+.pull-right[
+For example, the rectified linear unit (ReLU) activation function:
+$$
+`\begin{eqnarray*}
+\text{ReLU}(x) &amp;=&amp; \begin{cases} \begin{array}{cc}
+                                   x, &amp; \text{if}\ x \geq 0 \\
+                                   0, &amp; \text{otherwise}.
+                                 \end{array}
+                    \end{cases}
+\end{eqnarray*}`
+$$
+
+&lt;img src = "img/sum_ReLU.png" /&gt;
+
+Many more activation functions: sigmoid, softmax, identity, etc. (see further).
+]
+
+---
+
+# Examples of activation functions
+
+&lt;img src="img/activations.jpg" width="250%" height="250%" style="display: block; margin: auto;" /&gt;
+
+Source: [https://stanford.edu/~shervine/teaching/cs-229/cheatsheet-deep-learning](https://stanford.edu/~shervine/teaching/cs-229/cheatsheet-deep-learning)
+
+---
+
+# From the simple neural network to ANNs
+
+.pull-left[
+Artificial Neural networks (.KULbginline[ANNs]): 
+
+* a collection of neurons 
+* organized into an ordered set of layers 
+* directed connections pass signals between neurons in adjacent layers 
+* .hi-pink[to train]: &lt;br&gt; update parameters describing the connections by minimizing loss function over training data 
+* .hi-pink[to predict]: &lt;br&gt; pass `\(\boldsymbol{x}_i\)` to first layer, output of final layer is `\(\hat{y}_i\)`.
+
+The network is .KULbginline[dense] or .KULbginline[densely connected] if each neuron in a layer receives an input from all the neurons present in the previous layer.
+
+
+
+]
+
+.pull-right[
+
+&lt;img src = "img/feed_forward.png"/&gt;
+
+This is a .KULbginline[feedforward] neural network - no loops!
+
+]
+
+---
+
+# The neural nets' terminology
+
+.pull-left[
+Using the neural nets terminology or language: 
+
+* intercept called .KULbginline[the bias]
+
+* slopes called .KULbginline[weights] 
+
+* `\(L+1\)` layers in total, with input layer denoted as layer 0 and output layer as `\(L\)`
+
+* use `\(a\)` (from .KULbginline[activation]) to denote the output of a given neuron in a given layer
+
+* technically, .KULbginline[deep learning] refers to any neural network that has 
+2 or more hidden layers.
+
+]
+
+.pull-right[
+
+&lt;img src = "img/perceptron.png"/&gt;
+
+
+A single layer ANN, also called perceptron or artificial neuron.
+
+]
+
+---
+
+class: inverse, center, middle
+name: fundamentals
+
+# Neural network architecture in Keras
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#FAFAFA' size=1px width=796px&gt;&lt;/html&gt;
+
+---
+
+
+# An architecture with layers
+
+In a neural network, **.green[input]** travels through a sequence of **.blue[layers]**, 
+and gets transformed into the **.red[output]**.
+
+.pull-left[
+&lt;img src="img/example_neural_network.png" width="400" height="250" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+This sequential layer structure is really at the core of the Keras library.
+
+
+```python
+*model = keras.models.Sequential([
+  keras.layers.Dense(...),
+  keras.layers.Dense(...)
+])
+```
+]
+
+&lt;br&gt;
+
+.KULbginline[Layers] consist of .KUlbginline[nodes] and the .KULbginline[connections] between these nodes and the previous layer.
+
+`layer_dense()` is creating a fully connected feed forward neural network.
+
+---
+
+# An architecture with layers (cont.)
+
+.pull-left[
+
+
+```python
+model = keras.models.Sequential([ 
+* keras.layers.Dense(...), # hidden layer
+* keras.layers.Dense(...) # output layer
+])
+```
+
+Each `layer_dense()` represents a hidden layer *or* the final output layer.
+
+
+```python
+model = keras.models.Sequential([ 
+* keras.layers.Dense(...), # hidden layer 1
+* keras.layers.Dense(...), # hidden layer 2
+* keras.layers.Dense(...), # hidden layer 3
+* keras.layers.Dense(...) # output layer
+])
+```
+]
+
+.pull-right[
+
+* We can add multiple hidden layers by adding more `layer_dense()` functions.
+
+* Technically, .KULbginline[deep learning] refers to any neural network that has 
+2 or more hidden layers.
+
+* The last `layer_dense()` will always represent the output layer.
+
+]
+
+---
+
+# A hidden layer
+
+
+```r
+model = keras.models.Sequential([ 
+* keras.layers.Dense(units = 512, activation='relu', input_shape = [784]), # hidden layer
+])
+```
+
+.pull-left[
+
+* `units = 512`: number of nodes in the given layer
+
+* `input_shape = [784]`
+   - tells the first hidden layer how many input features there are
+   - only required for the first `layer_dense`
+   
+* `activation = 'relu'`: this hidden layer uses the ReLU activation function. 
+
+Here: the MNIST pictures (28x28) are flattened to a an input vector of length 784.
+]
+
+.pull-right[
+
+&lt;img src="img/hidden_layer.png" width="715" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# A hidden layer - some intuition
+
+Nodes in the hidden layer(s) represent intermediary features that we do not explicitely define. 
+
+We let the model decide the optimal features.
+
+For example, recognizing a digit is more difficult than recognizing a horizontal or vertical line.
+
+&lt;img src="img/neural_network_digital.png" width="700" height="100" style="display: block; margin: auto;" /&gt;
+
+Hidden layers automatically split the problem into smaller problems that are easier to model.
+
+&lt;img src="img/neural_network_digital_example.png" width="700" height="100" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Output layer
+
+
+```python
+model = keras.models.Sequential([ 
+  keras.layers.Dense(units = 512, activation='relu', input_shape = [784]), 
+* keras.layers.Dense(units = 10, activation='softmax')
+])
+```
+
+The choice of the `units` and `activation` function in the output layer depend on the type of prediction!
+
+.pull-left[
+Two primary arguments of concern for the final output layer:
+
+1. number of units
+   - regression: `units = 1`:
+
+
+]
+
+.pull-right[
+
+&lt;img src="img/output_layer_continuous.png" width="80%" height="80%" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Output layer
+
+
+```python
+model = keras.models.Sequential([ 
+  keras.layers.Dense(units = 512, activation='relu', input_shape = [784]), 
+* keras.layers.Dense(units = 10, activation='softmax')
+])
+```
+
+The choice of the `units` and `activation` function in the output layer depend on the type of prediction!
+
+.pull-left[
+Two primary arguments of concern for the final output layer:
+
+1. number of units
+   - regression: `units = 1`
+   - binary classification: `units = 1`
+   
+]
+
+.pull-right[
+
+
+
+
+&lt;img src="img/output_layer_binary.png" width="80%" height="80%" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Output layer
+
+
+```python
+model = keras.models.Sequential([ 
+  keras.layers.Dense(units = 512, activation='relu', input_shape = [784]), 
+* keras.layers.Dense(units = 10, activation='softmax')
+])
+```
+
+The choice of the `units` and `activation` function in the output layer depend on the type of prediction!
+
+.pull-left[
+Two primary arguments of concern for the final output layer:
+
+1. number of units
+   - regression: `units = 1`
+   - binary classification: `units = 1`
+   - multi-class classification: `units = n`
+]
+.pull-right[
+
+&lt;img src="img/output_layer_multi.png" width="75%" height="75%" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Output layer
+
+
+```python
+model = keras.models.Sequential([ 
+  keras.layers.Dense(units = 512, activation='relu', input_shape = [784]), 
+* keras.layers.Dense(units = 10, activation='softmax')
+])
+```
+
+The choice of the `units` and `activation` function in the output layer depend on the type of prediction!
+
+.pull-left[
+Two primary arguments of concern for the final output layer:
+
+1. number of units
+2. activation function
+   - regression: `activation = NULL` (identity function)
+]
+.pull-right[
+
+&lt;img src="img/activation_identity.png" width="804" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Output layer
+
+
+```python
+model = keras.models.Sequential([ 
+  keras.layers.Dense(units = 512, activation='relu', input_shape = [784]), 
+* keras.layers.Dense(units = 10, activation='softmax')
+])
+```
+
+The choice of the `units` and `activation` function in the output layer depend on the type of prediction!
+
+.pull-left[
+Two primary arguments of concern for the final output layer:
+
+1. number of units
+2. activation function
+   - regression: `activation = NULL` (identity function)
+   - binary classification: `activation = 'sigmoid'`
+]
+.pull-right[
+&lt;img src="ML_part1_Python_files/figure-html/unnamed-chunk-27-1.svg" style="display: block; margin: auto;" /&gt;
+
+`\(f(y) = \frac{1}{1 + e^{-y}}\)`
+]
+
+---
+
+# Output layer
+
+
+```python
+model = keras.models.Sequential([ 
+  keras.layers.Dense(units = 512, activation='relu', input_shape = [784]), 
+* keras.layers.Dense(units = 10, activation='softmax')
+])
+```
+
+The choice of the `units` and `activation` function in the output layer depend on the type of prediction!
+
+.pull-left[
+Two primary arguments of concern for the final output layer:
+
+1. number of units
+2. activation function
+   - regression: `activation = NULL` (identity function)
+   - binary classification: `activation = 'sigmoid'`
+   - multi-class classification: `activation = 'softmax'`
+
+]
+
+.pull-right[
+
+&lt;img src="img/softmax.png" width="800" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+name: yourturn
+class: clear
+
+.left-column[
+
+&lt;!-- Add icon library --&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
+
+## &lt;i class="fa fa-edit"&gt;&lt;/i&gt; &lt;br&gt; Your turn
+
+]
+
+
+.right-column[
+
+&lt;br&gt;
+Ultimately, here is a summary of the network architecture discussed so far for the MNIST data
+
+
+```r
+model = keras.models.Sequential([
+  keras.layers.Dense(units = 512, 
+                     activation='relu', 
+                     input_shape = [784]),
+  keras.layers.Dense(units = 10, 
+                     activation = 'softmax')
+])
+```
+
+Can you figure out how many parameters will be trained for this network?
+
+]
+
+
+---
+
+class: clear
+
+.pull-left[
+
+
+```
+## Model: "sequential"
+## ________________________________________________________________________________
+## Layer (type)                        Output Shape                    Param #     
+## ================================================================================
+## dense_1 (Dense)                     (None, 512)                     401920      
+## ________________________________________________________________________________
+## dense (Dense)                       (None, 10)                      5130        
+## ================================================================================
+## Total params: 407,050
+## Trainable params: 407,050
+## Non-trainable params: 0
+## ________________________________________________________________________________
+```
+
+]
+
+.pull-right[
+
+The model has 407,050 parameters:
+
+* 784 inputs (28x28 pixels in a single image) 
+
+* 1 hidden layer, with
+  - 512 nodes and ReLU activation
+  - thus, (784 x 512) + 512 = 401,920 parameters
+
+* multi-class output layer, with
+  - 10 nodes
+  - softmax activation function
+  - thus, (512 x 10) + 10 = 5,130 parameters
+  
+* all together, that makes 407,050 parameters!
+
+]
+
+
+---
+
+
+class: inverse, center, middle
+name: compilation
+
+# Network compilation
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#FAFAFA' size=1px width=796px&gt;&lt;/html&gt;
+
+
+---
+
+# Loss function and forward pass
+
+.pull-left[
+
+* Initialize weights (randomly).
+
+* The forward pass then results in predicted values `\(\hat{\textbf{y}}\)`, to be compared with `\(\textbf{y}\)`.
+
+* The difference is measured with a loss function, the quantity that will be minimized during training.
+
+Keras includes many .KULbginline[common loss functions]:
+
+* `"mse"`: Gaussian
+* `"poisson"`: Poisson
+* `"binary_crossentropy"`: binary classification
+* `"categorical_crossentropy"`: multi-class classification
+* many others, see the [Keras documentation](https://keras.io/losses/)
+
+Pick a loss function that aligns best to the problem at hand!
+]
+
+.pull-right[
+
+&lt;img src="img/forward_pass3.png" width="561" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Compiling the model
+
+.pull-left[
+
+```python
+model = model.compile(
+*   loss = 'categorical_crossentropy',
+    optimizer = keras.optimizers.RMSprop(), 
+    metrics = ['accuracy']
+  )
+```
+
+
+With `loss = "categorical_crossentropy"` the loss of a single training observation is 
+
+$$ \sum_{j=0}^9 -y_j \cdot \log{(f(s_j))},   $$
+where `\(j\)` runs over the classes in the multi-class prediction problem, `\(f(s_j)\)` is the fitted probability of class `\(j\)` and `\(y_j\)` is a 0/1 hot-encoding of the truly observed class.
+
+For instance, when the true input digit is 1 the vector `\(y\)` is `\((0, 1, 0, 0, \ldots, 0)\)`.
+
+]
+
+.pull-right[
+
+You can also define your  .hi-pink[own loss] function in Keras, e.g.
+
+```python
+def mse(y_pred, y_true):
+    return tf.math.reduce_mean((y_pred - y_true)**2)
+
+model = model.compile(
+*   loss = mse,
+    optimizer = keras.optimizers.RMSprop(), 
+    metrics = ['accuracy']
+  )
+```
+
+* `tf.math.reduce_mean` is the tensorflow implementation of `mean` that takes a tensor as input.
+]
+
+---
+# Compiling the model (cont.)
+
+.pull-left[
+
+```python
+model = model.compile(
+    loss = 'categorical_crossentropy',
+*   optimizer = keras.optimizers.RMSprop(),
+    metrics = ['accuracy']
+  )
+```
+
+
+Keras includes several .KULbginline[optimizers] for minimizing the loss function. 
+
+Popular choices are:
+* `optimizer_rmsprop()`
+* `optimizer_adam()`
+* other optimizers, see the [Keras documentation](https://keras.io/optimizers/)
+
+]
+
+.pull-right[
+
+The goal is to find weights and bias terms that .KULbginline[minimize the loss function].
+
+&lt;img src="img/forward_pass4.png" width="568" style="display: block; margin: auto;" /&gt;
+
+
+]
+
+---
+
+# Gradient descent and backpropagation
+
+.pull-left[
+
+In general terms, we want to find (with `\(w\)` for all unknown parameters)
+
+`$$\min_{w} \mathcal{L}(w),$$`
+With .KULbginline[gradient descent]: we'll move in the direction the loss locally decreases the fastest!
+
+Thus, 
+
+`$$w_{\text{new}} = w_{\text{old}} - \eta \cdot \nabla_{w} \mathcal{L}(w_{\text{old}}),$$`
+
+with learning rate `\(\eta\)`. 
+
+With a loss function evaluated over `\(n\)` training data points (cfr. supra on *epochs* and *minibatches*)
+
+`$$\nabla_w \mathcal{L}(w) = \frac{1}{n} \sum_{i=1}^n \nabla_w \mathcal{L}_i$$`.
+
+]
+
+---
+
+# Gradient descent and backpropagation
+
+.pull-left[
+
+In general terms, we want to find (with `\(w\)` for all unknown parameters)
+
+`$$\min_{w} \mathcal{L}(w),$$`
+With gradient descent: we'll move in the direction the loss locally decreases the fastest!
+
+Thus, 
+
+`$$w_{\text{new}} = w_{\text{old}} - \eta \cdot \nabla_{w} \mathcal{L}(w_{\text{old}}),$$`
+
+with learning rate `\(\eta\)`. 
+
+With a loss function evaluated over `\(n\)` training data points (cfr. supra on *epochs* and *minibatches*)
+
+`$$\nabla_w \mathcal{L}(w) = \frac{1}{n} \sum_{i=1}^n \nabla_w \mathcal{L}_i$$`.
+
+]
+
+.pull-right[
+
+Computing the gradient of the loss function wrt all trainable parameters:
+
+* tons of parameters
+* need for efficient algorithm to calculate gradient
+* need for generic algorithm usable for arbitrary number of layers and neurons in each layer.
+
+The strategy (Rumelhart et al., 1986, Nature)
+
+* [backpropagation](https://en.wikipedia.org/wiki/Backpropagation)
+* derivatives in outer layer L are easy 
+* derivatives in layer `\(l\)` as a function of derivatives in layer `\(l+1\)`
+* all about the .KULbginline[chain rule] for derivatives!
+]
+
+---
+
+# Performance metrics
+
+.pull-left[
+
+```python
+model = model.compile(
+    loss = 'categorical_crossentropy',
+    optimizer = keras.optimizers.RMSprop(),  
+*   metrics = ['accuracy']
+  )
+```
+
+
+In additition to the loss function, other .KULbginline[performance measures (metrics)] can be tracked while calibrating the model.
+
+* `accuracy` (= categorical_accuracy)
+* `binary_accuracy`
+* `categorical_accuracy`
+* `sparse_categorical_accuracy`
+* `top_k_categorical_accuracy`
+* `sparse_top_k_categorical_accuracy`
+* `cosine_proximity`
+* any loss function
+]
+
+.pull-right[
+&lt;img src="img/neural_network_metrics.png" width="400" height="400" style="display: block; margin: auto;" /&gt;
+]
+
+
+---
+
+name: yourturn
+class: clear
+
+.left-column[
+
+&lt;!-- Add icon library --&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
+
+## &lt;i class="fa fa-edit"&gt;&lt;/i&gt; &lt;br&gt; Your turn
+
+]
+
+
+.right-column[
+As discussed, any .KULbginline[loss function] can be also used as an accuracy .KULbginline[metric].
+
+
+In the case of the MNIST dataset, we search for a model with a high .KULbginline[accuracy]. Hereto, we calculate the number of times the class of the observed `\(y\)` equals the predicted class `\(\hat{y}\)`, and divide by the size of the (training) set.
+
+.hi-pink[Q]: Why can we not use .KULbginline[accuracy] as our loss function?
+]
+
+---
+
+# Fitting the model
+
+`fit(.)` tunes the model parameters (the weights and bias terms). 
+
+We use `fit()` to start executing model training.
+
+.pull-left[
+
+
+```python
+model.fit(
+*   x = input,
+*   y = output,
+    epochs = 10, 
+    batch_size = 128,
+    validation_split = 0.2,
+    verbose = 1
+  )
+```
+
+]
+
+.pull-right[
+The first arguments are the input data (here: training images stored in `input`) and their corresponding class (here: 0-9, the labels of the training data, stored in `output`).
+]
+
+
+---
+# Fitting the model (cont.)
+
+`fit(.)` tunes the model parameters (the weights and bias terms). 
+
+We use `fit()` to start executing model training.
+
+.pull-left[
+
+
+```python
+model.fit(
+    x = input,
+    y = output,
+*   epochs = 10,
+*   batch_size = 128,
+    validation_split = 0.2, 
+    verbose = 1
+  )
+```
+
+Parameter updates are calculated based on small subsets of the training data with `batch_size` elements. 
+
+An `epoch` is one iteration of the algorithm over the full dataset. 
+
+]
+
+.pull-right[
+&lt;img src="img/neural_network_epoch.gif" width="400" height="300" style="display: block; margin: auto;" /&gt;
+.right[Source: [Bradley Boehmke](https://github.com/rstudio-conf-2020/dl-keras-tf)]
+]
+
+---
+
+# Three variants of gradient descent
+
+.pull-left[
+
+With .KULbginline[batch] gradient descent: 
+
+* compute loss for each observation in the training data
+* update parameters after all training examples have been evaluated
+* .hi-pink[con]: scales horribly to bigger data sets.
+
+With .KULbginline[stochastic] gradient descent: 
+
+* randomly select an observation, compute gradient
+* update parameters after this single observation has been evaluated
+* .hi-pink[con]: takes a long time to convergence.
+]
+
+.pull-right[
+
+With .KULbginline[mini-batch] gradient descent: 
+
+* randomly select a subset of the training observations, compute gradient
+* update parameters after this subset has been evaluated.
+
+.KULbginline[Pros]: 
+
+* balance efficiency of batch vs stochastic
+* balance robust convergence of batch with some stochastic nature to avoid local minima.
+
+.hi-pink[Cons]: 
+
+* additional tuning parameter. 
+
+]
+
+---
+
+# Fitting the model (cont.)
+
+`fit(.)` tunes the model parameters (the weights and bias terms). 
+
+.pull-left[
+
+
+```python
+model.fit(
+    x = input,
+    y = output,
+    epochs = 10, 
+    batch_size = 128, 
+*   validation_split = 0.2,
+    verbose = 1
+  )
+```
+
+
+
+]
+
+.pull-right[
+
+With the `validation_split = 0.2` we use the last 20% of our input training data as a hold-out validation set.
+
+We evaluate the loss on this validation set at the end of each epoch.
+
+]
+
+---
+
+name: yourturn
+class: clear
+
+.left-column[
+
+&lt;!-- Add icon library --&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
+
+## &lt;i class="fa fa-edit"&gt;&lt;/i&gt; &lt;br&gt; Your turn
+
+]
+
+
+.right-column[
+&lt;br&gt;
+You will now .KULbginline[design], .KULbginline[compile] and .KULbginline[fit] your own neural network for the MNIST dataset. 
+
+
+As a form of paralellized model selection, all of us will play with different model parameters. This way we gain insight into which parameter values work well for this dataset.
+&lt;br&gt;
+&lt;br&gt;
+**Base model**: the neural network with a single hidden layer, as specified in the R script.
+&lt;br&gt;
+&lt;br&gt;
+Try some of the following ideas to improve the model: (more ideas on the next slide!)
+
+* .KULbginline[add hidden layers]: the number of nodes in subsequent layers should decrease
+
+* .KULbginline[change batch size]
+
+* .KULbginline[change the activation function].
+]
+
+---
+name: yourturn
+class: clear
+
+.left-column[
+
+&lt;!-- Add icon library --&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
+
+## &lt;i class="fa fa-edit"&gt;&lt;/i&gt; &lt;br&gt; Your turn
+
+]
+
+
+.right-column[
+
+Examples of .KULbginline[layer types]
+
+* [`keras.layers.BatchNormalization`](https://keras.io/layers/noise/): adds gaussian noise N(0, stddev) to the nodes when training the model. This reduces the probability of overfitting.
+
+```python
+model = model.add(
+  keras.layers.GaussianNoise(stddev = .1)
+)
+```
+
+* [`keras.layers.Dropout`](https://keras.io/layers/noise/): sets a fraction `rate` of the input units to zero. This reduces the probability of overfitting.
+
+```python
+model = model.add(
+  keras.layers.Dropout(rate = 0.05)
+)
+```
+
+* [`keras.layers.BatchNormalization`](https://keras.io/layers/normalization/): centers and scales the values of each node in the previous layer.
+
+```python
+model = model.add(
+  keras.layers.BatchNormalization
+)
+```
+
+
+]
+
+
+---
+# Model evaluation
+
+`evaluate(.)` calculates losses and metrics on the test dataset. 
+
+```python
+model.evaluate(test_input, test_output, verbose = 0)
+```
+
+```
+##      loss  accuracy 
+## 0.2336414 0.9341000
+```
+
+`predict(.)` returns a vector of length 10 with the probability per output node.
+
+```python
+prediction = model.predict(test_input, verbose = 0)
+```
+
+```
+##  [1] 0.000 0.000 0.001 0.003 0.000 0.000 0.000 0.995 0.000 0.001
+```
+
+The predicted category is the node with the highest probability.
+
+```python
+labels = np.argmax(prediction, axis=1)  
+```
+
+---
+
+
+# Model evaluation (cont.)
+
+We inspect the misclassified images to gain more insight in the model.
+
+Below we show some examples for our pre-trained MNIST neural network.
+
+.pull-left[
+
+```python
+np.where(labels != y_test)[0]
+```
+
+```
+## [1]  9 34 39 64 88 93
+```
+]
+
+.pull-right[
+
+&lt;img src="img/neural_network_misclassification.png" width="700" height="300" style="display: block; margin: auto;" /&gt;
+]
+---
+# Model evaluation (cont.)
+
+We inspect the images for which the model assigns the lowest probability to the correct class.
+
+
+```python
+# select per row, the probability corresponding to the correct class
+prob_correct = np.array([prediction[row, correct] for row, correct in enumerate(y_test)])
+
+# get the index of the 5 lowest records in prob_correct
+lowest_score = np.where(prob_correct.argsort().argsort() &lt; 5)[0]
+```
+
+&lt;img src="img/neural_network_worst.png" width="700" height="300" style="display: block; margin: auto;" /&gt;
+---
+name: yourturn
+class: clear
+
+.left-column[
+
+&lt;!-- Add icon library --&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
+
+## &lt;i class="fa fa-edit"&gt;&lt;/i&gt; &lt;br&gt; Your turn
+
+]
+
+
+.right-column[
+&lt;br&gt;
+You will now .KULbginline[evaluate] your own model!
+&lt;br&gt;&lt;br&gt;
+* .hi-pink[Q.1]: calculate the accuracy of your model on the test set. &lt;br&gt; &lt;br&gt;
+* .hi-pink[Q.2]: visualize some of the misclassified images from your model. &lt;br&gt;&lt;br&gt;
+* .hi-pink[Q.3]: generate an image consisting of random noise and let the model classify this image. What do you think of the results? &lt;br&gt;
+Remember: Your input should be a 1x784 array (or tensor) with values in [0,255].
+]
+
+---
+# Feeding random data to a neural network
+
+.pull-left[
+
+```python
+noise = np.floor(np.random.rand(1, 28*28) * 256)
+noise.shape
+```
+
+&lt;img src="ML_part1_Python_files/figure-html/unnamed-chunk-59-1.svg" width="360" height="360" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+
+```python
+model.predict(noise)
+```
+
+```
+##      [,1] [,2]  [,3]  [,4]  [,5]  [,6]  [,7]  [,8]  [,9] [,10]
+## [1,]    0    0 0.617 0.124 0.002 0.196 0.042 0.001 0.018     0
+```
+
+Our pre-trained MNIST model is pretty sure that the input on the left is a two!
+]
+
+---
+# Model understanding
+
+Inspecting the calibrated weights can provide some insight in the features created in the hidden layer.
+
+.pull-left[
+Every node in the first hidden layer has 784 connections with the input layer. 
+
+The weights of these connections can be visualized as an 28x28 image.
+
+
+```python
+node = 9
+layer = 0
+weights = first_model.layers[layer].get_weights()[:, node]
+
+def visualize_weight(weights:np.ndarray) -&gt; None:
+  weights = weights / np.max(np.abs(weights))
+  plt.imshow(weights, cmap = 'RdYlGn', alpha = np.abs(weights), vmin=-1, vmax=1)
+  
+visualize_weight(np.reshape(weights, (28, 28)))
+```
+
+On the right we show a visualization of the calibrated weights for a pre-trained model with (only) 16 nodes in the first hidden layer.
+]
+
+.pull-right[
+
+&lt;img src="img/neural_network_calibrated_weights.png" width="400" height="400" style="display: block; margin: auto;" /&gt;
+]
+---
+# Summary of the fundamentals
+
+.pull-left[
+
+We discussed so far: 
+
+* design neural networks .KULbginline[sequentially] in {keras}
+`keras_model_sequential` 
+
+* layers consist of .KULbginline[nodes] and .KULbginline[connections]
+
+* vanilla choice is a .KULbginline[fully connected layer]
+`layer_dense`
+
+* .KULbginline[fit] the model via gradient descent (i.e. backpropagation).
+]
+
+.pull-right[
+
+List of .KULbginline[tuning/architectural] choices:
+
+  - the number of layers
+  - the number of nodes per layer
+  - the activation functions
+  - the layer type *(more on this coming soon)*
+  - the loss function
+  - the optimization algorithm
+  - the batch size
+  - the number of epochs
+  - ...
+]
+
+---
+
+class: clear
+
+&lt;div style='height:100%; overflow:scroll;'&gt;
+&lt;img src = "img/neural_network_types.png" /&gt;
+&lt;/div&gt;
+
+---
+
+class: inverse, center, middle
+name: regression
+
+# Claim frequency and severity regression
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#FAFAFA' size=1px width=796px&gt;&lt;/html&gt;
+
+---
+# Regression with neural networks
+
+
+
+Create a .hi-pink[training] and .hi-pink[test] set with {rsample}:
+
+
+In Module 1 we fitted .KULbginline[GLMs] for .hui-pink[claim frequency] as follows:
+
+$$ \color{#FFA500}{Y} \sim \texttt{Poisson}(\lambda = \exp( \color{#e64173}{x}^{'}\color{#20B2AA}{\beta})).$$
+&lt;br&gt;
+
+We now .hi-pink[redefine] this model as a .KULbginline[neural network]:
+
+.center[
+Formula |  GLM  | Neural network
+------------- | -------------
+`\(\color{#FFA500}{Y}\)`   | response | output node
+&amp;nbsp; Poisson &amp;nbsp; | &amp;nbsp; distribution &amp;nbsp; | loss function
+exp            | inverse link function | &amp;nbsp; activation function &amp;nbsp;
+`\(\color{#e64173}{x}\)`  | predictors | input nodes
+`\(\color{#20B2AA}{\beta}\)` | fitted effect | weights
+]
+
+---
+# Your first claim frequency neural network
+
+Let's start with a model with .KULbginline[only an intercept]:
+
+$$ \color{#FFA500}{Y} \sim \texttt{Poisson}(\lambda = \exp( \color{#e64173}{1} \cdot \color{#20B2AA}{\beta})).$$
+
+.pull-left[
+
+```python
+nn_freq_intercept = keras.models.Sequential([
+  keras.layers.Dense(units = 1, 
+                     activation='exponential',
+                     input_shape = [1],
+                     use_bias = False)
+])
+
+nn_freq_intercept.compile(
+  optimizer = 'RMSprop', 
+  loss = 'poisson', 
+  metrics = [tf.keras.metrics.MeanSquaredError()]
+)
+```
+
+.hi-pink[Q.]: How many parameters does this model have?
+]
+
+.pull-right[
+* `layer_dense`: there are .hi-pink[no hidden layers], the input layer is directly connected to the output layer.
+
+* `units = 1`: there is .hi-pink[one] output node.
+
+* `activation = 'exponential'`: we use an .hi-pink[exponential] inverse link function.
+
+* `input_shape = c(1)`: there is .hi-pink[one] input node, i.e., the intercept which will be constant one.
+
+* `use_bias = FALSE`: we don't need a .hi-pink[bias] term, since we explicitly include an input node equal to one. 
+
+* `loss = 'poisson'`: we maximize the .hi-pink[Poisson] likelihood, i.e., minimize the Poisson deviance.
+]
+
+---
+# Your first claim frequency neural network
+
+Let's start with a model with .KULbginline[only an intercept]:
+
+$$ \color{#FFA500}{Y} \sim \texttt{Poisson}(\lambda = \exp( \color{#e64173}{1} \cdot \color{#20B2AA}{\beta})).$$
+
+.pull-left[
+
+```r
+nn_freq_intercept = keras.models.Sequential([
+  keras.layers.Dense(units = 1, 
+                     activation='exponential',
+                     input_shape = [1],
+                     use_bias = False)
+])
+
+nn_freq_intercept.compile(
+  optimizer = 'RMSprop', 
+  loss = 'poisson', 
+  metrics = [tf.keras.metrics.MeanSquaredError()]
+)
+```
+
+
+.hi-pink[Q.]: How many parameters does this model have?
+
+```python
+nn_freq_intercept.count_params()
+```
+
+```
+## [1] 1
+```
+
+]
+
+.pull-right[
+* `layer_dense`: there are .hi-pink[no hidden layers], the input layer is directly connected to the output layer.
+
+* `units = 1`: there is .hi-pink[one] output node.
+
+* `activation = 'exponential'`: we use an .hi-pink[exponential] inverse link function.
+
+* `input_shape = c(1)`: there is .hi-pink[one] input node, i.e., the intercept which will be constant one.
+
+* `use_bias = FALSE`: we don't need a .hi-pink[bias] term, since we explicitly include an input node equal to one.  
+
+* `loss = 'poisson'`: we maximize the .hi-pink[Poisson] likelihood.
+]
+
+---
+# Your first claim frequency neural network (cont.)
+
+.pull-left[
+Create .hi-pink[vectors] for the input and output:
+
+
+```python
+input_intercept = np.ones(train.shape[0])
+counts = np.array(train['nclaims'])
+```
+
+.KULbginline[Fit] the neural network:
+
+```python
+nn_freq_intercept.fit(x = input_intercept,
+                      y = counts,
+                      epochs = 30,
+                      batch_size = 1024,
+                      validation_split = 0,
+                      verbose = 0)
+```
+
+
+
+]
+
+.pull-right[
+* `x = intercept`: use the intercept as .hi-pink[feature].
+
+* `y = counts`: use the claim counts as .hi-pink[target].
+
+* `epochs = 20`: perform 20 training .hi-pink[iterations] over the complete data.
+
+* `batch_size = 1024`: use .hi-pink[batches] with 1024 observations to update weights.
+
+* `validation_split = 0`: don't use a .hi-pink[validation] set, so all observations are used for training. 
+
+* `verbose = 0`: .hi-pink[silence] keras such that no output is generated during fitting.
+]
+
+---
+# Comparing our neural network with a GLM
+
+We .KULbginline[compare] the results of our neural network with the same model specified as a GLM:
+
+
+```python
+import statsmodels.api as sm
+glm_freq_intercept = sm.formula.glm(
+  "nclaims ~ 1", 
+  data=train, 
+  family=sm.families.Poisson()
+).fit()
+
+# GLM coefficients
+glm_freq_intercept.params
+
+## NN weights
+nn_freq_intercept.get_weights()[0]
+```
+
+
+```
+## (Intercept) 
+##   -2.091133
+## [[1]]
+##           [,1]
+## [1,] -2.085138
+```
+
+There is a small difference in the parameter estimate, resulting from a .hi-pink[different optimization technique].
+
+
+---
+name: yourturn
+class: clear
+
+.left-column[
+
+&lt;!-- Add icon library --&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
+
+## &lt;i class="fa fa-edit"&gt;&lt;/i&gt; &lt;br&gt; Your turn
+
+]
+
+
+.right-column[
+
+We have shown that a .KULbginline[Poisson GLM] can be implemented as a neural network.
+&lt;br&gt;
+
+* .hi-pink[Q.1]: adapt this code to replicate a .KULbginline[binomial GLM] with a .hi-pink[logit] link function. Add .KULbginline[accuracy] as a .hi-pink[metric] in your model.&lt;br&gt;
+Hint 1: the `sigmoid` activation function is the inverse of the logit link function. &lt;br&gt;
+Hint 2: the `binary_crossentropy` loss maximizes the loglikelihood of Bernoulli outcomes:
+$$ \sum_{i=1}^n (\color{#FFA500}{y_i} \cdot \log(p_i) + (1-\color{#FFA500}{y_i}) \cdot \log(1-p_i)).$$
+
+* .hi-pink[Q.2]: .KULbginline[fit] your NN on the outcome or target variable (nclaims &gt; 0), i.e., modeling no claim versus having at least one claim. 
+
+* .hi-pink[Q.3]: .KULbginline[compare] your fitted neural network with a .hi-pink[GLM].
+]
+
+
+---
+# Taking exposure into account in a neural network
+
+.pull-left[
+The .KULbginline[Poisson loss] function, including .hi-pink[exposure], is
+
+$$ \mathcal{L} = \sum_i \texttt{expo}_i \cdot \lambda_i - y_i \cdot \log(\texttt{expo}_i \cdot \lambda_i),$$
+which is proportional to:
+
+$$ \mathcal{L} = \sum_i \texttt{expo}_i \cdot (\lambda_i - \frac{y_i}{\texttt{expo}_i} \log(\lambda_i)).$$
+This is the loss function for a Poisson model with:
+
+* observations `\(\frac{y_i}{\texttt{expo}_i}\)` and
+* weights `\(\texttt{expo}_i\)`.
+]
+
+.pull-right[
+Notice indeed how the parameter estimates of the following two GLMs are .hi-pink[identical]:
+
+```python
+glm_offset = sm.formula.glm("nclaims ~ 1", 
+                            data=train, 
+                            offset = np.log(train.expo),
+                            family=sm.families.Poisson()).fit(); 
+glm_offset.params
+
+train['claims_per_expo'] = train.nclaims / train.expo
+
+glm_weights = sm.formula.glm("claims_per_expo ~ 1", 
+                             data=train, 
+                             freq_weights = train.expo, 
+                             family=sm.families.Poisson()).fit(); 
+glm_weights.params
+```
+
+```
+## (Intercept)       ageph 
+## -1.22357710 -0.01644835
+## (Intercept)       ageph 
+## -1.22357710 -0.01644835
+```
+]
+
+---
+# Taking exposure into account in a neural net (cont.)
+
+.pull-left[
+.KULbginline[Nothing] changes in our neural network model .hi-pink[specification]:
+
+```python
+nn_freq_exposure = keras.models.Sequential([
+  keras.layers.Dense(units = 1, 
+                     activation='exponential',
+                     input_shape = [1],
+                     use_bias = False)
+])
+
+nn_freq_exposure.compile(
+  optimizer = 'RMSprop', 
+  loss = 'poisson', 
+  metrics = [tf.keras.metrics.MeanSquaredError()]
+)
+```
+
+
+It is however .hi-pink[good practice] to always .KULbginline[recompile]. &lt;br&gt; &lt;br&gt;
+Otherwise the neural network will pick up where it left off last time, with the optimal weights after fitting.
+
+]
+
+.pull-right[
+Create a .hi-pink[vector] with exposure values:
+
+```python
+exposure = np.array(train['expo'])
+```
+
+
+Divide claim counts by exposure and use weights:
+
+```python
+nn_freq_exposure.fit(x = input_intercept,
+*                    y = counts/exposure,
+*                    sample_weight = exposure,
+                     epochs = 20,
+                     batch_size = 1024,
+                     validation_split = 0,
+                     verbose = 0)
+```
+
+.KULbginline[Stay tuned] to find out how to include exposure via an .hi-pink[offset] term!
+]
+
+---
+# Adding an input feature and a hidden layer
+
+.pull-left[
+Let's start by adding .hi-pink[one feature], namely `ageph`:
+
+```python
+ageph = np.array(train['ageph'])
+```
+
+
+Define the neural network .hi-pink[architecture] with a hidden layer:
+
+```python
+nn_freq_ageph = keras.models.Sequential([
+  keras.layers.BatchNormalization(input_shape = [1]),
+  keras.layers.Dense(units = 5, activation='tanh'),
+  keras.layers.Dense(units = 1, activation='exponential', use_bias = True)
+])
+
+nn_freq_ageph.compile(
+  optimizer = 'RMSprop', 
+  loss = 'poisson', 
+  metrics = [tf.keras.metrics.MeanSquaredError()]
+```
+
+]
+
+.pull-right[
+* .KULbginline[Pre-processing] (see Module 1): 
+
+`layer_batch_normalization` .hi-pink[centers] and .hi-pink[scales] the input features (here only one) .hi-pink[per mini-batch].
+
+* .KULbginline[Hidden] layer:
+
+`layer_dense` with five nodes and the `tanh` activation function.
+
+* .KULbginline[Output] layer:
+
+`layer_dense` with one node and the `exponential` activation function.&lt;br&gt; &lt;br&gt;
+Notice how we set `use_bias = TRUE` for the .hi-pink[intercept.]
+
+]
+
+---
+# Adding an input feature and a hidden layer (cont.)
+
+.pull-left[
+Let's .hi-pink[fit] our brand new neural net:
+
+```python
+*nn_freq_ageph.fit(ageph,
+                 counts/exposure,
+                 sample_weight = exposure,
+                 epochs = 60,
+                 batch_size = 1024,
+                 validation_split = 0,
+                 verbose = 0)
+```
+
+
+
+We compare the fit with a .hi-pink[GAM] with a smooth effect for `ageph`:
+
+
+
+.hi-pink[Q.]: What do you think about those fits?
+]
+
+.pull-right[
+&lt;img src="ML_part1_Python_files/figure-html/unnamed-chunk-91-1.svg" style="display: block; margin: auto;" /&gt;
+
+
+]
+---
+# Adding a skip connection in a neural network
+
+So far, we stayed in a .hi-pink[purely sequential] architecture with `keras_model_sequential()`.
+
+Now, we will allow some input nodes to be connected directly to the output node, i.e., .KULbginline[skip connections].
+
+.pull-left[
+&lt;img src="img/CANNarchitecture.png" width="75%" style="display: block; margin: auto;" /&gt;
+Figure taken from [Schelldorfer and Wuthrich (2019)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3320525).
+]
+
+.pull-right[
+The output node, without skip connection, calculates:
+`$$f_{activation}(\sum_i w_i h_i + b).$$`
+
+With a skip connection, this simply becomes:
+`$$f_{activation}(\sum_i w_i h_i + b + s).$$`
+We take a .hi-pink[linear] combination of the last hidden layer outputs and .hi-pink[add] the skip input, .hi-pink[before] applying the activation function.
+
+So, what can we do with this?
+]
+
+---
+# Adding a skip connection in a neural network (cont.)
+
+Let's take a .KULbginline[claim frequency] example with the `exponential` activation function.
+
+* Adding exposure as an .hi-pink[offset] term:
+`$$output = \exp(\sum_i w_i h_i + b + \color{#e64173}{\log(expo)}) = \color{#e64173}{expo} \cdot \exp(\sum_i w_i h_i + b).$$`
+
+* Adding a .hi-pink[base] prediction:
+`$$output = \exp(\sum_i w_i h_i + b + \color{#e64173}{\log(base)}) = \color{#e64173}{base} \cdot \exp(\sum_i w_i h_i + b).$$`
+
+* The .hi-pink[combination] of both:
+`$$output = \exp(\sum_i w_i h_i + b + \color{#e64173}{\log(expo \cdot base)}) = \color{#e64173}{expo \cdot base} \cdot \exp(\sum_i w_i h_i + b).$$`
+
+A skip connection allows us to guide the neural net in the right direction and to model .hi.pink[adjustments] on top of the base predictions, for example obtained via a GLM or GAM. In the actuarial lingo this is called a .KULbginline[C]ombined .KULbginline[A]ctuarial .KULbginline[N]eural .KULbginline[N]etwork (.hi-pink[CANN]).
+
+---
+# Adding a skip connection in a neural network (cont.)
+
+Structure of the CANN model we are going to implement
+
+&lt;img src="img/structure_cann.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+# Adding a skip connection in a neural network (cont.)
+
+There are now multiple sources of input data (covariates and skip connection). Hence, the sequential API can no longer be used and we switch to the procedural API for defining our neural network.
+
+We first define the path of the covariate `ageph`. Apply no activation function in the final layer (= linear activation function). The exponential activation function will be applied later after adding the value from the skip connection.
+
+```python
+input_nn = keras.layers.Input(shape = (1,), name = 'nn')
+
+norm_nn = keras.layers.BatchNormalization()(input_nn)
+dense_1 = keras.layers.Dense(units = 16, activation = 'relu')(norm_nn)
+output_nn = keras.layers.Dense(units = 1, activation = 'linear')(dense_1) 
+```
+
+Create an input for the skip connection.
+
+```python
+input_skip = keras.layers.Input(shape = (1,), name = 'skip')
+```
+
+---
+# Adding a skip connection in a neural network (cont.)
+
+.hi-pink[Combine] the neural network and skip connection via `keras.layers.Add` and pass through the `exponential` function with fixed weights (bias zero, weights 1):
+
+```python
+interm = keras.layers.Add()([output_nn, input_skip])
+init = constant_initializer(np.ones((1,1)))
+output = keras.layers.Dense(units = 1, 
+                               activation = 'exponential', 
+                               trainable = False,
+                               kernel_initializer = init,
+                               name = 'output')(interm)
+```
+
+Define the full model with .hi-pink[inputs] and .hi-pink[output] via `keras.models.Model` and .hi-pink[compile] as usual:
+
+```pyton
+cann = tf.keras.models.Model(inputs = [input_nn, input_skip], outputs = output)
+cann.compile(optimizer = 'RMSprop', loss = 'poisson', metrics = [tf.keras.metrics.MeanSquaredError()])
+```
+
+---
+# Adding a skip connection in a neural network (cont.)
+
+.pull-left[
+
+<div class="grViz html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-06c28b90155a3dc107e5" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-06c28b90155a3dc107e5">{"x":{"diagram":"digraph {\n\ngraph [layout = \"neato\",\n       outputorder = \"edgesfirst\",\n       bgcolor = \"white\"]\n\nnode [fontname = \"Helvetica\",\n      fontsize = \"10\",\n      shape = \"circle\",\n      fixedsize = \"true\",\n      width = \"0.5\",\n      style = \"filled\",\n      fillcolor = \"aliceblue\",\n      color = \"gray70\",\n      fontcolor = \"gray50\"]\n\nedge [fontname = \"Helvetica\",\n     fontsize = \"8\",\n     len = \"1.5\",\n     color = \"gray80\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"nn\nInputLayer\n\", shape = \"rectangle\", fixedsize = \"FALSE\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"0,5!\"] \n  \"2\" [label = \"dense_1\nDense\ntanh\", shape = \"rectangle\", fixedsize = \"FALSE\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"0,4!\"] \n  \"3\" [label = \"dense\nDense\nlinear\", shape = \"rectangle\", fixedsize = \"FALSE\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"0,3!\"] \n  \"4\" [label = \"skip\nInputLayer\n\", shape = \"rectangle\", fixedsize = \"FALSE\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"1.5,5!\"] \n  \"5\" [label = \"add\nAdd\n\", shape = \"rectangle\", fixedsize = \"FALSE\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"0.75,2!\"] \n  \"6\" [label = \"output\nDense\nexponential\", shape = \"rectangle\", fixedsize = \"FALSE\", fillcolor = \"#F0F8FF\", fontcolor = \"#000000\", pos = \"0.75,1!\"] \n  \"1\"->\"2\" \n  \"2\"->\"3\" \n  \"3\"->\"5\" \n  \"4\"->\"5\" \n  \"5\"->\"6\" \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+]
+
+.pull-right[
+Collect the CANN input data in a .hi-pink[named list]:
+
+
+```python
+cann_input = {
+  'nn':np.array(train['ageph']), 
+  'skip':np.array(skip_glm)
+}
+```
+
+
+.hi-pink[Fit] the CANN like we have seen before:
+
+```r
+cann.fit(x = cann_input,
+         y = counts,
+         epochs = 40,
+         batch_size = 1024,
+         validation_split = 0,
+         verbose = 1)
+```
+]
+
+
+
+---
+# Adding a skip connection in a neural network (cont.)
+
+.pull-left[
+&lt;img src="ML_part1_Python_files/figure-html/unnamed-chunk-103-1.svg" style="display: block; margin: auto;" /&gt;
+
+]
+
+.pull-right[
+&lt;img src="ML_part1_Python_files/figure-html/unnamed-chunk-104-1.svg" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+class: inverse, center, middle
+name: cnn
+
+# Convolutional neural networks (CNNs)
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#FAFAFA' size=1px width=796px&gt;&lt;/html&gt;
+
+---
+# The problems with flattening
+  
+.pull-left[
+With ANNs, our first step in the MNIST analysis was to .KULbginline[flatten] the image matrix into a vector:
+    
+
+```python
+input = tf.reshape(x_train, [len(x_train), 28*28])
+```
+    
+    
+This approach
+  * is not .hi-pink[translation] invariant. A completely different set of nodes gets activated when the image is shifted.
+    
+  * ignores the .hi-pink[dependency] between nearby pixels.
+    
+  * requires a .hi-pink[large number] of parameters/weights as each node in the first hidden layer is connected to all nodes in the input layer.
+
+]
+
+.pull-right[
+&lt;img src="img/neural_network_flattening.png" width="300" height="350" style="display: block; margin: auto;" /&gt;
+  
+.right[
+Source: [Sumit Saha](https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53)]
+
+.KULbginline[Convolutional layers] allow to handle multi-dimensional data, .hi-pink[without] flattening.
+]
+
+
+
+---
+# Convolutional layers
+
+Classical hidden layers (as we have seen so far) use .hi-pink[1 dimensional inputs] to construct .hi-pink[1 dimensional features].
+
+.KULbginline[2d convolutional] layers use .hi-pink[2 dimensional input] (for example images) to construct .hi-pink[2 dimensional feature maps].
+
+.pull-left[
+The weights in a 2d convolutional layer are structured in a small image, called the .hi-pink[kernel] or the .hi-pink[filter].
+
+&lt;img src="img/neural_network_convolution_op1.png" width="300" height="200" style="display: block; margin: auto;" /&gt;
+
+]
+
+.pull-right[
+We slide the kernel over the input image, multiply the selected part of the image and the kernel elementwise and sum:
+
+&lt;img src="img/neural_network_convolution_op2.png" width="400" height="250" style="display: block; margin: auto;" /&gt;
+
+.right[Source: [Bradley Boehmke](https://github.com/rstudio-conf-2020/dl-keras-tf)]
+]
+
+---
+# Convolutional layers (cont.)
+
+Classical hidden layers (as we have seen so far) use .hi-pink[1 dimensional inputs] to construct .hi-pink[1 dimensional features].
+
+.KULbginline[2d convolutional] layers use .hi-pink[2 dimensional input] (for example images) to construct .hi-pink[2 dimensional feature maps].
+
+.pull-left[
+The weights in a 2d convolutional layer are structured in a small image, called the .hi-pink[kernel] or the .hi-pink[filter].
+
+&lt;img src="img/neural_network_convolution_op1.png" width="300" height="200" style="display: block; margin: auto;" /&gt;
+
+]
+
+.pull-right[
+We slide the kernel over the input image, multiply the selected part of the image and the kernel elementwise and sum:
+
+&lt;img src="img/neural_network_convolution_op3.gif" width="400" height="250" style="display: block; margin: auto;" /&gt;
+.right[Source: [Bradley Boehmke](https://github.com/rstudio-conf-2020/dl-keras-tf)]
+]
+
+---
+
+# Convolutional layers (cont.)
+
+.KULbginline[2d convolutional] layers can .hi-pink[detect] the same, local feature .hi-pink[anywhere] in the image.
+
+.pull-left[
+A useful feature for classifying the number four is the presence of straight, .hi-pink[vertical lines].
+
+.hi-pink[Q]: How should the .hi-pink[kernel] look to detect this feature?
+  
+]
+
+.pull-right[
+original image:
+&lt;img src="img/neural_network_mnist4.png" width="200" height="200" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Convolutional layers (cont.)
+
+.KULbginline[2d convolutional] layers can .hi-pink[detect] the same, local feature .hi-pink[anywhere] in the image.
+
+.pull-left[
+A useful feature for classifying the number four is the presence of straight, .hi-pink[vertical lines].
+
+.hi-pink[Q]: How should the .hi-pink[kernel] look to detect this feature?
+  
+&lt;img src="ML_part1_Python_files/figure-html/unnamed-chunk-112-1.svg" width="200" height="200" style="display: block; margin: auto;" /&gt;
+
+
+]
+
+.pull-right[
+original image:
+&lt;img src="img/neural_network_mnist4.png" width="200" height="200" style="display: block; margin: auto;" /&gt;
+feature map:
+&lt;img src="img/neural_network_feature_map.png" width="200" height="200" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# Convolutional layers in {keras}
+
+.pull-left[
+
+Add a .KULbginline[2d convolutional layer] with `layer_conv_2d()`:
+
+ 
+
+```python
+model_conv = keras.models.Sequential([
+    keras.layers.Conv2D(
+*       filters = 8,
+*       kernel_size = (3, 3),
+*       strides = (1, 1),
+*       input_shape = (28, 28, 1)
+    )
+])
+```
+  
+ 
+]
+
+.pull-right[
+* `filters = 8`:
+  
+  We construct .hi-pink[8 feature maps] associated to different kernels/.hi-pink[filters].
+
+* `kernel_size = (3, 3)`:
+  
+  The filter/.hi-pink[kernel] has a size of .hi-pink[3x3].
+
+* `strides = (1, 1)`:
+  
+  We .hi-pink[move] the .hi-pink[kernel] in steps of .hi-pink[1] pixel in both the horizontal and vertical direction. This is a common choice.
+
+* `input_shape = (28, 28, 1)`:
+  
+  If this is the first layer of the model, we also have to specify the dimensions of the input data. The input consists of .hi-pink[1 image] of size .hi-pink[28x28].
+]
+
+
+---
+# Pooling layers
+
+A convolution layer is typically followed by a .hi-pink[pooling step], which reduces the size of feature maps.
+
+.pull-left[
+.KULbginline[Pooling layers] divide the image in blocks of equal size and then .hi-pink[aggregate] the data per block.
+
+Two common operations are:
+  
+  * average pooling
+
+```r
+keras.layers.AveragePooling2D(
+        pool_size = (2, 2),
+        strides = (2, 2)
+    )
+```
+
+* max pooling
+
+```r
+keras.layers.MaxPool2D(
+        pool_size = (2, 2),
+        strides = (2, 2)
+    )
+```
+
+
+]
+
+.pull-right[
+&lt;img src="img/neural_network_pooling.jpg" width="380" height="240" style="display: block; margin: auto;" /&gt;
+
+* `pool_size = (2, 2)`: 
+  
+  Pool blocks of 2x2
+
+* `strides = (2, 2)`:
+  
+  Move in steps of size 2 in both the horizontal and vertical direction.
+  
+]
+
+---
+# Flattening layers
+
+.pull-left[
+When all features are extracted, the data is .KULbginline[flattened]. 
+
+This data can be seen as .hi-pink[engineered features], automatically created by the CNN architecture.
+
+&lt;br&gt;
+
+In a next step, a .hi-pink[feed-forward ANN] is used to analyze these local features.
+
+
+]
+
+.pull-right[
+
+```r
+model_conv = keras.models.Sequential([
+    keras.layers.Conv2D(...),
+    keras.layers.MaxPool2D(...),
+*   keras.layers.Flatten()
+  ])
+```
+
+
+```r
+model_conv = keras.models.Sequential([
+    keras.layers.Conv2D(...),
+    keras.layers.MaxPool2D(...),
+    keras.layers.Flatten() 
+*   keras.layers.Dense()
+  ])
+```
+]
+
+---
+# A CNN architecture
+
+&lt;br&gt; 
+
+&lt;img src="https://iq.opengenus.org/content/images/2019/04/pic01-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# A CNN with the MNIST data
+
+.pull-left[
+The image .hi-pink[input] data is not flattened this time:
+
+```python
+from keras.datasets import mnist
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+```
+
+We need to expand the axis with one extra dimension:
+
+```python
+input_train = tf.expand_dims(x_train, axis = -1)
+input_test = tf.expand_dims(x_test, axis = -1)
+```
+
+The .hi-pink[output] labels are one-hot encoded like before:
+
+```python
+output_train = keras.utils.to_categorical(y_train)
+output_test = keras.utils.to_categorical(y_test)
+```
+
+
+]
+
+.pull-right[
+Let's fit a CNN to the MNIST data:
+
+```python
+model_conv = keras.models.Sequential([
+    keras.layers.Conv2D(
+        filters = 8,
+        kernel_size = (3, 3),
+        strides = (1, 1),
+        input_shape = (28, 28, 1)
+    ),
+    keras.layers.MaxPool2D(
+        pool_size = (2, 2),
+        strides = (2, 2)
+    ),
+    keras.layers.Flatten(),
+    keras.layers.Dense(units = 10, activation = 'softmax')
+  ])
+
+model_conv.compile(
+    loss = 'categorical_crossentropy', 
+    optimizer = keras.optimizers.RMSprop(), 
+    metrics = ['accuracy']
+  )
+```
+
+
+
+]
+
+---
+# Inspecting the filter/kernel
+
+The 8 3x3 .KULbginline[filters] can be extracted from the network via `.get_weights()`:
+
+```python
+filters = model_conv.layers[0].get_weights()[0]
+filters.shape
+```
+
+
+```
+## [1] 3 3 1 8
+```
+
+.hi-pink[Q:] can you find an interpretation for each of these filters?
+
+&lt;img src="img/kernels.png" width="300" style="display: block; margin: auto;" /&gt;
+
+
+---
+name: yourturn
+class: clear
+
+.left-column[
+  
+&lt;!-- Add icon library --&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
+  
+  ## &lt;i class="fa fa-edit"&gt;&lt;/i&gt; &lt;br&gt; Your turn
+    
+]
+
+
+.right-column[
+Time for you to .KULbginline[experiment] with .hi-pink[CNNs] in {keras}. Why not try to achieve 98% accuracy?
+
+&lt;br&gt;
+  
+We have now built .KULbginline[convolutional] neural networks using .hi-pink[layer_conv_2d()]. &lt;br&gt;
+In addition, {keras} offers .hi-pink[layer_conv_1d()] and .hi-pink[layer_conv_3d()]. &lt;br&gt;
+
+.hi-pink[Q]: For which data would you use .hi-pink[layer_conv_1d()]? &lt;br&gt;
+
+.hi-pink[Q]: For which data would you use .hi-pink[layer_conv_3d()]?
+
+]
+---
+class: inverse, center, middle
+name: autoencoder
+
+# Auto encoders
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#FAFAFA' size=1px width=796px&gt;&lt;/html&gt;
+  
+---
+# Auto encoders
+  
+.KULbginline[Auto encoders] compress the input data into a .hi-pink[limited number of features]. 
+
+.pull-left[
+&lt;img src="img/neural_network_auto_encoder.png" width="300" height="400" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+
+* .KULbginline[Unsupervised] machine learning algorithm. 
+
+* .KULbginline[Dimension reduction] of the input data, comparable with PCA. The low dimensional compressed data is often used as an input in predictive models.
+
+* Input and output are identical.
+
+* Few nodes in the center of the network. This is the compressed feature space.
+
+* A high performing auto encoder is capable of reconstructing the input data based on compressed feature space.
+]
+
+---
+name: yourturn
+class: clear
+
+.left-column[
+
+&lt;!-- Add icon library --&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
+  
+  ## &lt;i class="fa fa-edit"&gt;&lt;/i&gt; &lt;br&gt; Your turn
+    
+]
+
+
+.right-column[
+  
+Auto encoders can be implemented in Keras using the same tools that you have already learned during this course. 
+&lt;br&gt;
+The following steps guide you in .KULbginline[constructing] and .KULbginline[training] your personal auto encoder for the MNIST dataset.
+
+* Make a sketch of the neural network that you will implement.
+
+* Define a neural network with 5 layers:
+  * Layer 1: input (784 nodes)
+  * Layer 2: Hidden layer (128 nodes)
+  * Layer 3: Hidden layer (32 nodes), this is the compressed feature space
+  * Layer 4: Hidden layer (128 nodes)
+  * Layer 5: Output layer (784 nodes)
+
+* Choose an appropriate activation function for each layer:
+  * identity
+  * ReLU
+  * sigmoid
+  * softmax
+]
+
+---
+name: yourturn
+class: clear
+
+.left-column[
+
+&lt;!-- Add icon library --&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
+  
+  ## &lt;i class="fa fa-edit"&gt;&lt;/i&gt; &lt;br&gt; Your turn
+    
+]
+
+.right-column[
+
+* Which of these loss functions can we use to train the model?
+  * mse
+  * binary_crossentropy
+  * categorical_crossentropy
+
+* Fit the model on the MNIST data in 10 epochs.
+
+* Experiment with adding other layer types to the model:
+  * layer_gaussian_noise(stddev)
+  * layer_dropout(rate)
+  * layer_batch_normalization()
+]
+
+---
+class: clear
+
+.pull-left[
+
+```python
+input_train_flatten = tf.reshape(x_train, [len(x_train), 28*28]) / 255
+
+input_encoder = tf.keras.layers.Input(shape = (784,))
+layer1 = keras.layers.Dense(units = 128, activation = 'sigmoid', input_shape = [784])(input_encoder)
+encoder = keras.layers.Dense(units = 32, activation = 'sigmoid')(layer1)
+
+# decode the input
+layer3 = keras.layers.BatchNormalization()(encoder)
+layer4 = keras.layers.Dense(units = 128, activation = 'sigmoid')(layer3)
+decoded = keras.layers.Dense(units = 784, activation = 'sigmoid')(layer4)
+
+model = keras.models.Model(inputs = input_encoder, outputs = decoded)
+
+model.compile(
+    loss = 'binary_crossentropy',
+    optimizer = keras.optimizers.RMSprop(), 
+    metrics = ['mse']
+)
+
+model.fit(
+    x = input_train_flatten,
+    y = input_train_flatten,
+    epochs = 10,
+    batch_size = 1024,
+    validation_split = 0.2,
+    verbose = 1
+  )
+```
+]
+
+.pull-right[
+`encoder` contains the first part of the model for compressing the model.
+  
+`model` is the full auto encoder, including the encode and decode step.
+  
+By defining `model` as an extension of `encoder`, we can compress the data using `predict(encoder, ...)` after training the model.
+]
+
+---
+class: clear
+
+.pull-left[
+
+```python
+input_train_flatten = tf.reshape(x_train, [len(x_train), 28*28]) / 255
+
+input_encoder = tf.keras.layers.Input(shape = (784,))
+layer1 = keras.layers.Dense(units = 128, activation = 'sigmoid', input_shape = [784])(input_encoder)
+encoder = keras.layers.Dense(units = 32, activation = 'sigmoid')(layer1)
+
+# decode the input
+layer3 = keras.layers.BatchNormalization()(encoder)
+layer4 = keras.layers.Dense(units = 128, activation = 'sigmoid')(layer3)
+decoded = keras.layers.Dense(units = 784, activation = 'sigmoid')(layer4)
+
+model = keras.models.Model(inputs = input_encoder, outputs = decoded)
+
+model.compile(
+    loss = 'binary_crossentropy',
+    optimizer = keras.optimizers.RMSprop(), 
+    metrics = ['mse']
+)
+
+model.fit(
+    x = input_train_flatten,
+    y = input_train_flatten,
+    epochs = 10,
+    batch_size = 1024,
+    validation_split = 0.2,
+    verbose = 1
+  )
+```
+]
+
+.pull-right[
+I interpret the hidden nodes as binary features and therefore use a `sigmoid` activation function. 
+
+We no longer use the `softmax` activation function in the last layer, since multiple output nodes can be activated simultaneously.
+
+I choose `binary_crossentropy` as a loss function, since we have independent bernoulli outcome variables.
+
+Another good combination would have been:
+* activation `ReLU` in the hidden layers
+* activation `identity` in the output layer
+* `mse` as the loss function
+]
+
+---
+class:clear
+
+.pull-left[
+
+```python
+input_train_flatten = tf.reshape(x_train, [len(x_train), 28*28]) / 255
+
+input_encoder = tf.keras.layers.Input(shape = (784,))
+layer1 = keras.layers.Dense(units = 128, activation = 'sigmoid', input_shape = [784])(input_encoder)
+encoder = keras.layers.Dense(units = 32, activation = 'sigmoid')(layer1)
+
+# decode the input
+layer3 = keras.layers.BatchNormalization()(encoder)
+layer4 = keras.layers.Dense(units = 128, activation = 'sigmoid')(layer3)
+decoded = keras.layers.Dense(units = 784, activation = 'sigmoid')(layer4)
+
+model = keras.models.Model(inputs = input_encoder, outputs = decoded)
+
+model.compile(
+    loss = 'binary_crossentropy',
+    optimizer = keras.optimizers.RMSprop(), 
+    metrics = ['mse']
+)
+
+model.fit(
+*   x = input_train_flatten,
+*   y = input_train_flatten,
+    epochs = 10,
+    batch_size = 1024,
+    validation_split = 0.2,
+    verbose = 1
+  )
+```
+]
+
+.pull-right[
+The `input` variable is also passed to the model as the `output` parameter.
+]
+
+---
+# The big test
+  
+Let's compare the input and output of our auto encoder.
+
+
+```python
+result = model.predict(input_train_flatten)
+# the original image
+plt.imshow(np.reshape(input_train_flatten[1,:], (28, 28)), cmap='gray') 
+# the reconstruction of the model
+plt.imshow(np.reshape(input_train_flatten[1,:], (28, 28)), cmap='gray') 
+```
+
+
+&lt;img src="img/neural_network_auto_encoder_comparison.png" width="750" height="370" style="display: block; margin: auto;" /&gt;
+
+
+---
+# What happens with random noise?
+
+
+```python
+noise = np.floor(np.random.rand(1, 28*28) * 256)
+plt.imshow(np.reshape(model.predict(noise), (28, 28)), cmap='gray')
+```
+
+&lt;img src="img/neural_network_auto_encoder_noise.png" width="500" height="300" style="display: block; margin: auto;" /&gt;
+
+
+---
+name: wrap-up
+
+# Thanks!  &lt;img src="img/xaringan.png" class="title-hex"&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+Slides created with the R package [xaringan](https://github.com/yihui/xaringan).
+&lt;br&gt; &lt;br&gt; &lt;br&gt;
+Course material available via 
+&lt;br&gt;
+<svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#116E8A;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> https://github.com/katrienantonio/hands-on-machine-learning-Python-module-3
+
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightLanguage": "R",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"highlightSpans": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
