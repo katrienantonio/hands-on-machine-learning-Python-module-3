@@ -79,7 +79,7 @@ In two sessions we cover:
 - auto encoders
 - convolutional neural networks.
 
-Download lecture sheets in [pdf](https://katrienantonio.github.io/hands-on-machine-learning-Python-module-3/sheets/ML_part3.pdf). 
+Download lecture sheets in [pdf](https://katrienantonio.github.io/hands-on-machine-learning-Python-module-3/sheets/ML_Python_module_3.pdf). 
 
 
 ## Software Requirements

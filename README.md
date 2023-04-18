@@ -7,8 +7,8 @@ Course materials for the *Hands-on Machine Learning in Python* course
 (March - April 2023).
 
 📆 Module 1 on March 7 & 14, 2023, Module 2 on March 21 & 28, 2023 and
-Module 3 on April 18 & April 25, 2023 <br> ⏱ From 9.30 am to 12.30 pm
-<br> 📌 online, organized by Actuarieel Instituut
+Module 3 on April 18 & April 25, 2023 <br> 🕔 From 9.30 am to 12.30 pm
+<br> 📍 online, organized by Actuarieel Instituut
 
 Course materials will be posted in the week before the workshop. You are
 now on the landing page for **Module 3: neural networks**.
@@ -92,7 +92,7 @@ In two sessions we cover:
   - convolutional neural networks.
 
 Download lecture sheets in
-[pdf](https://katrienantonio.github.io/hands-on-machine-learning-Python-module-3/sheets/ML_part3.pdf).
+[pdf](https://katrienantonio.github.io/hands-on-machine-learning-Python-module-3/sheets/ML_Python_module_3.pdf).
 
 ## Software Requirements
 
